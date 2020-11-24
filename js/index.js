@@ -1,0 +1,65 @@
+// Set date
+$(document).ready(function() {
+	$("#calendar").attr("value", getDay(new Date()));
+});
+
+// Update notes to show only those that user wants to see
+function updateNotes(date)
+{
+	if (!Array.isArray(date))
+	{
+		$('.noted').filter('[data-time="'+date+'"]').removeClass('hidden');
+		$('.noted').filter(':not([data-time="'+date+'"])').addClass('hidden');
+	}
+	else
+	{
+		var s = '';
+
+		for (var i = 1; i < date.length; i++)
+		{
+			s += '[data-time="'+date[i]+'"]';
+			if (i + 1 != date.length) s += ',';
+		}
+
+		alert(s);
+
+		$('.noted').filter(s).removeClass('hidden');
+		$('.noted').filter(':not('+s+')').addClass('hidden');
+	}
+}
+
+// Returns full week from date
+function getWeek(date)
+{
+	let week = [];
+
+	for (let i = 1; i <= 7; i++) 
+	{
+		let first = date.getUTCDate() - date.getUTCDay() + i;
+		let day = new Date(date.setDate(first)).toISOString().slice(0, 10);
+		week.push(day);
+	}
+
+	return week;
+}
+
+// Returns one day from date
+function getDay(date)
+{
+	day = date.getUTCDate();
+	if (day < 10) day = '0' + day;
+
+	month = date.getUTCMonth() + 1;
+	if (month < 10) month = '0' + month;
+
+	year = date.getUTCFullYear();
+
+	return [year, month, day].join('-');
+}
+
+// Update notes on calendar change
+$('#calendar').change(function() {
+	var date = new Date($('#calendar').val());
+	updateNotes(getWeek(date));
+	//updateNotes(getDay(date));
+});

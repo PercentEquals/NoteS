@@ -1,0 +1,119 @@
+html, body
+{
+	margin: 0px;
+	background-color: #393939;
+	color: white;
+	font-family: Calibri, sans-serif;
+}
+
+header
+{
+	height: 50px;
+	background-color: #2A2A2A;
+}
+
+body > div
+{
+	margin: 20px;
+}
+
+.masonry
+{
+	column-gap: 10px;
+	column-count: 1;
+	transition: 1s width ease-in-out;
+}
+
+@media only screen and (min-width: 1300px) 
+{
+	.masonry 
+	{
+		column-count: 3;
+	}
+}
+
+@media only screen and (max-width: 1299px) and (min-width: 768px) 
+{
+	.masonry 
+	{
+		column-count: 2;
+	}
+}
+
+div[class^="note"] 
+{
+	font-size: 16px;
+	margin-bottom: 10px;
+	break-inside: avoid;
+	color: black;
+	background-color: #F2B866; /* #79A4D9; */
+	padding: 20px;
+	border-radius: 5px;
+	font-weight: bold;
+	transition: opacity 0.4s ease-in-out;
+	cursor: pointer;
+}
+
+div[class^="note"] > div
+{
+	color: #222;
+	text-decoration: underline;
+}
+
+div[class^="note"]:hover
+{
+	opacity: 0.40;
+}
+
+div[class^="note"]:nth-child(2n)
+{
+	background-color: #FCE06A/* #FCCA6A;/*#8479D9;*/
+}
+
+div[class^="note"]:nth-child(3n + 1)
+{
+	background-color: #FFD466;/* #FCE06A;#BA8DFC;*/
+}
+
+.sorted
+{
+	column-count: 7;
+	column-gap: 2px;
+	transition: 1s width ease-in-out;
+}
+
+.sorted > div
+{
+	background-color: #444;
+	width: 100%;
+}
+
+.sorted > div > div[class^="note"] 
+{
+	font-size: 14px;
+	padding: 10px;
+}
+
+/* ERROR PAGE */
+.error
+{
+	max-width: 750px;
+	background-color: #e74c3c;
+	padding: 20px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.error_wrapper
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+/* HIDDEN */
+.hidden
+{
+	display: none;
+}
