@@ -65,12 +65,12 @@ div[class^="note"]:hover
 	opacity: 0.40;
 }
 
-div[class^="note"]:nth-child(2n)
+div[class^="note"]:not(hidden):nth-child(2n)
 {
 	background-color: #FCE06A/* #FCCA6A;/*#8479D9;*/
 }
 
-div[class^="note"]:nth-child(3n + 1)
+div[class^="note"]:not(hidden):nth-child(3n + 1)
 {
 	background-color: #FFD466;/* #FCE06A;#BA8DFC;*/
 }
@@ -80,18 +80,41 @@ div[class^="note"]:nth-child(3n + 1)
 	column-count: 7;
 	column-gap: 2px;
 	transition: 1s width ease-in-out;
+	background-color: #444;
 }
 
 .sorted > div
 {
 	background-color: #444;
-	width: 100%;
+	display: flex;
+	flex-direction: column;
+	break-inside: avoid;
 }
 
 .sorted > div > div[class^="note"] 
 {
 	font-size: 14px;
 	padding: 10px;
+	margin-top: 10px;
+	break-inside: avoid;
+}
+
+.sorted > div > div:not([class^="note"])
+{
+	height: 78px;
+	font-size: 20px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+	font-weight: bold;
+	background-color: #333;
+}
+
+.sorted > div > div:not([class^="note"]) > div
+{
+	font-size: 14px;
 }
 
 /* ERROR PAGE */
@@ -112,8 +135,13 @@ div[class^="note"]:nth-child(3n + 1)
 	height: 100vh;
 }
 
-/* HIDDEN */
+/* Stylers */
 .hidden
 {
 	display: none;
+}
+
+.highlight
+{
+	background-color: #39F !important;
 }

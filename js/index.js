@@ -1,11 +1,13 @@
 // Set date
 $(document).ready(function() {
 	$("#calendar").attr("value", getDay(new Date()));
+	changeCalendar();
 });
 
 // Update notes to show only those that user wants to see
 function updateNotes(date)
 {
+	// Show good ones
 	if (!Array.isArray(date))
 	{
 		$('.noted').filter('[data-time="'+date+'"]').removeClass('hidden');
@@ -21,10 +23,17 @@ function updateNotes(date)
 			if (i + 1 != date.length) s += ',';
 		}
 
-		alert(s);
-
 		$('.noted').filter(s).removeClass('hidden');
 		$('.noted').filter(':not('+s+')').addClass('hidden');
+
+		// Change dates in calendar
+		// also show if date is today
+		$(".sorted > div").each(function(index) {
+			var s = date[index];
+			if (date[index] == getDay(new Date())) s += " (Today)";
+			
+			$(this).children("div").children("div").text(s);
+		});
 	}
 }
 
@@ -35,7 +44,8 @@ function getWeek(date)
 
 	for (let i = 1; i <= 7; i++) 
 	{
-		let first = date.getUTCDate() - date.getUTCDay() + i;
+		let sday = (date.getUTCDay() == 0) ? 7 : date.getUTCDay();
+		let first = (date.getUTCDate() - sday + i);
 		let day = new Date(date.setDate(first)).toISOString().slice(0, 10);
 		week.push(day);
 	}
@@ -58,8 +68,18 @@ function getDay(date)
 }
 
 // Update notes on calendar change
-$('#calendar').change(function() {
+function changeCalendar()
+{
 	var date = new Date($('#calendar').val());
+
+	// Highlight selected day
+	$(".sorted > div > div").removeClass("highlight");
+	$(".sorted > div:nth-child("+((date.getUTCDay() == 0) ? 7 : date.getUTCDay())+") > div:first-child").addClass("highlight");
+
 	updateNotes(getWeek(date));
 	//updateNotes(getDay(date));
+}
+
+$('#calendar').change(function() {
+	changeCalendar();
 });
