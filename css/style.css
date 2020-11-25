@@ -4,7 +4,7 @@ html, body
 	background-color: #393939;
 	color: white;
 	font-family: Calibri, sans-serif;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 header
@@ -90,12 +90,12 @@ div[class^="note"]:hover
 
 div[class^="note"]:not(hidden):nth-child(2n)
 {
-	background-color: #FCE06A/* #FCCA6A;/*#8479D9;*/
+	background-color: #FCE06A;
 }
 
 div[class^="note"]:not(hidden):nth-child(3n + 1)
 {
-	background-color: #FFD466;/* #FCE06A;#BA8DFC;*/
+	background-color: #FFD466;
 }
 
 .sorted
@@ -103,7 +103,6 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 	display: flex;
 	flex-wrap: nowrap;
 	transition: 1s width ease-in-out;
-	/*background-color: #444;*/
 	gap: 4px;
 	min-width: 1000px;
 }
@@ -130,6 +129,9 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 	overflow: hidden;
 	text-overflow: ellipsis;
 	max-height: 200px;
+	
+	/* alternate design */
+	flex: 1 1;
 }
 
 .sorted > div > div:not([class^="note"])
