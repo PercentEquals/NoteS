@@ -104,36 +104,37 @@ catch(PDOException $e)
 			<h2>Sorted notes</h2>
 		</div>
 
-		<div class="masonry sorted">
-			<div class="monday"> 
-				<div>Monday <div></div></div>
-				<?php foreach($notes_with_dates[1] as $n) $n->print(); ?> 
+		<div class="overflow">
+			<div class="masonry sorted">
+				<div class="monday"> 
+					<div>Monday <div></div></div>
+					<?php foreach($notes_with_dates[1] as $n) $n->print(); ?> 
+				</div>
+				<div class="tuesday"> 
+					<div>Tuesday <div></div></div>
+					<?php foreach($notes_with_dates[2] as $n) $n->print(); ?> 
+				</div>
+				<div class="wednesday"> 
+					<div>Wednesday <div></div></div>
+					<?php foreach($notes_with_dates[3] as $n) $n->print(); ?> 
+				</div>
+				<div class="thursday"> 
+					<div>Thursday <div></div></div>
+					<?php foreach($notes_with_dates[4] as $n) $n->print(); ?> 
+				</div>
+				<div class="friday"> 
+					<div>Friday <div></div></div>
+					<?php foreach($notes_with_dates[5] as $n) $n->print(); ?> 
+				</div>
+				<div class="saturday"> 
+					<div>Saturday <div></div></div>
+					<?php foreach($notes_with_dates[6] as $n) $n->print(); ?> 
+				</div>
+				<div class="sunday"> 
+					<div>Sunday <div></div></div>
+					<?php foreach($notes_with_dates[0] as $n) $n->print(); ?> 
+				</div>
 			</div>
-			<div class="tuesday"> 
-				<div>Tuesday <div></div></div>
-				<?php foreach($notes_with_dates[2] as $n) $n->print(); ?> 
-			</div>
-			<div class="wednesday"> 
-				<div>Wednesday <div></div></div>
-				<?php foreach($notes_with_dates[3] as $n) $n->print(); ?> 
-			</div>
-			<div class="thursday"> 
-				<div>Thursday <div></div></div>
-				<?php foreach($notes_with_dates[4] as $n) $n->print(); ?> 
-			</div>
-			<div class="friday"> 
-				<div>Friday <div></div></div>
-				<?php foreach($notes_with_dates[5] as $n) $n->print(); ?> 
-			</div>
-			<div class="saturday"> 
-				<div>Saturday <div></div></div>
-				<?php foreach($notes_with_dates[6] as $n) $n->print(); ?> 
-			</div>
-			<div class="sunday"> 
-				<div>Sunday <div></div></div>
-				<?php foreach($notes_with_dates[0] as $n) $n->print(); ?> 
-			</div>
-			
 		</div>
 	</div>
 

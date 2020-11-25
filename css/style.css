@@ -77,14 +77,18 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 
 .sorted
 {
-	column-count: 7;
-	column-gap: 2px;
+	display: flex;
+	flex-wrap: nowrap;
 	transition: 1s width ease-in-out;
-	background-color: #444;
+	/*background-color: #444;*/
+	gap: 4px;
+	min-width: 1000px;
 }
 
 .sorted > div
 {
+	width: 100%;
+	flex-grow: 1;
 	background-color: #444;
 	display: flex;
 	flex-direction: column;
@@ -94,13 +98,14 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 .sorted > div > div[class^="note"] 
 {
 	font-size: 14px;
-	padding: 10px;
-	margin-top: 10px;
-	break-inside: avoid;
+	padding: 10px; 
+	margin-left: 2px;
+	margin-right: 2px;
 }
 
 .sorted > div > div:not([class^="note"])
 {
+	margin-bottom: 10px;
 	height: 78px;
 	font-size: 20px;
 	text-align: center;
@@ -144,4 +149,11 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 .highlight
 {
 	background-color: #39F !important;
+}
+
+.overflow
+{
+	overflow: hidden;
+	position: relative;
+	overflow-x: auto;
 }
