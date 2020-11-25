@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 // Update notes to show only those that user wants to see
 function updateNotes(date) {
-	// Show good ones
+	// Filter only those from whole week
 	var s = '';
 
 	for (var i = 0; i < date.length; i++)
@@ -20,7 +20,7 @@ function updateNotes(date) {
 
 	// Change dates in calendar
 	// also show if date is today
-	$(".sorted > div").each(function(index) {
+	$(".day").each(function(index) {
 		var s = date[index];
 		$(this).children("div").children("div").attr("data-day-time", s);
 		if (date[index] == getDay(new Date())) s += " (Today)";
@@ -64,8 +64,8 @@ function changeCalendar()
 	var date = new Date($('#calendar').val());
 
 	// Highlight selected day
-	$(".sorted > div > div").removeClass("highlight");
-	$(".sorted > div:nth-child("+((date.getUTCDay() == 0) ? 7 : date.getUTCDay())+") > div:first-child").addClass("highlight");
+	$(".day > div").removeClass("highlight");
+	$(".day:nth-child("+((date.getUTCDay() == 0) ? 7 : date.getUTCDay())+") > div:first-child").addClass("highlight");
 
 	updateNotes(getWeek(date));
 }

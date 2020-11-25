@@ -1,7 +1,5 @@
 <?php
 
-// https://mansfeld.pl/programowanie/kurs-pdo-bazy-danych-php/
-
 // Error logging
 function err($error)
 {
@@ -25,7 +23,7 @@ class Note
 
 	public function print()
 	{
-		$d = '<div id="N'.$this->id.'" ';//draggable="true"';
+		$d = '<div id="N'.$this->id.'" ';
 		if ($this->date != NULL) 
 		{
 			$h = ($this->date != date("Y-m-d")) ? "note noted hidden" : "note noted";
@@ -42,8 +40,9 @@ class Note
 }
 
 // Arrays that store sorted and unsorted notes
+// where sorted array is 2d and first dimension represent weekday (0 - 6 where 0 is sunday)
 $notes = array();
-$notes_with_dates = array_fill(0, 7, array()); //array(array());
+$notes_with_dates = array_fill(0, 7, array());
 
 // Database connection and fetching
 try 
@@ -60,7 +59,6 @@ try
 		}
 		else 
 		{
-			//echo date('w', strtotime($row['date']));
 			$notes_with_dates[date('w', strtotime($row['date']))][] = new Note($row['id'], $row['description'], $row['date']);
 		}
 	}
@@ -108,31 +106,31 @@ catch(PDOException $e)
 
 		<div class="overflow">
 			<div class="sorted">
-				<div class="monday"> 
+				<div class="day"> 
 					<div>Monday <div></div></div>
 					<?php foreach($notes_with_dates[1] as $n) $n->print(); ?> 
 				</div>
-				<div class="tuesday"> 
+				<div class="day"> 
 					<div>Tuesday <div></div></div>
 					<?php foreach($notes_with_dates[2] as $n) $n->print(); ?> 
 				</div>
-				<div class="wednesday"> 
+				<div class="day"> 
 					<div>Wednesday <div></div></div>
 					<?php foreach($notes_with_dates[3] as $n) $n->print(); ?> 
 				</div>
-				<div class="thursday"> 
+				<div class="day"> 
 					<div>Thursday <div></div></div>
 					<?php foreach($notes_with_dates[4] as $n) $n->print(); ?> 
 				</div>
-				<div class="friday"> 
+				<div class="day"> 
 					<div>Friday <div></div></div>
 					<?php foreach($notes_with_dates[5] as $n) $n->print(); ?> 
 				</div>
-				<div class="saturday"> 
+				<div class="day"> 
 					<div>Saturday <div></div></div>
 					<?php foreach($notes_with_dates[6] as $n) $n->print(); ?> 
 				</div>
-				<div class="sunday"> 
+				<div class="day"> 
 					<div>Sunday <div></div></div>
 					<?php foreach($notes_with_dates[0] as $n) $n->print(); ?> 
 				</div>
@@ -140,12 +138,12 @@ catch(PDOException $e)
 		</div>
 	</div>
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript" src="js/dragging.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/dragging.js"></script>
 
 </body>
 </html>

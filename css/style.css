@@ -1,3 +1,4 @@
+/* Global */
 html, body
 {
 	margin: 0px;
@@ -7,17 +8,19 @@ html, body
 	overflow-x: hidden;
 }
 
+body > div
+{
+	margin: 20px;
+}
+
+/* Header */
 header
 {
 	height: 50px;
 	background-color: #2A2A2A;
 }
 
-body > div
-{
-	margin: 20px;
-}
-
+/* Unsorted */
 .masonry
 {
 	column-gap: 10px;
@@ -46,22 +49,7 @@ body > div
 	}
 }
 
-/* corner but bugged
-.masonry > div[class^="note"]:before 
-{
-	content: "";
-	position: absolute;
-	top: 0;
-	right: 0;
-	border-width: 0 12px 12px 0;
-	border-style: solid;
-	border-color: #DBA351 #393939;
-	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
-	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
-	box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
-}
-*/
-
+/* Note */
 div[class^="note"] 
 {
 	position: relative;
@@ -77,27 +65,22 @@ div[class^="note"]
 	cursor: pointer;
 }
 
-div[class^="note"] > div
-{
-	color: #222;
-	text-decoration: underline;
-}
-
 div[class^="note"]:hover
 {
 	opacity: 0.40;
 }
 
-div[class^="note"]:not(hidden):nth-child(2n)
+div[class^="note"]:not(.hidden):nth-child(2n)
 {
 	background-color: #FCE06A;
 }
 
-div[class^="note"]:not(hidden):nth-child(3n + 1)
+div[class^="note"]:not(.hidden):nth-child(3n + 1)
 {
 	background-color: #FFD466;
 }
 
+/* Sorted */
 .sorted
 {
 	display: flex;
@@ -107,7 +90,7 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 	min-width: 1000px;
 }
 
-.sorted > div
+.day
 {
 	width: 100%;
 	flex-grow: 1;
@@ -119,7 +102,7 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 	min-height: 139px;
 }
 
-.sorted > div > div[class^="note"] 
+.day > div[class^="note"] 
 {
 	font-size: 14px;
 	padding: 10px; 
@@ -134,7 +117,7 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 	flex: 1 1;
 }
 
-.sorted > div > div:not([class^="note"])
+.day > div:not([class^="note"])
 {
 	margin-bottom: 10px;
 	height: 78px;
@@ -148,7 +131,7 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 	background-color: #333;
 }
 
-.sorted > div > div:not([class^="note"]) > div
+.day > div:not([class^="note"]) > div
 {
 	font-size: 14px;
 }
@@ -198,6 +181,7 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 	z-index: 1000;
 	opacity: 1 !important;
 
+	flex-grow: 1 1;
 	font-size: 14px !important;
     padding: 10px !important;
     overflow: hidden !important;
