@@ -21,7 +21,7 @@ body > div
 {
 	column-gap: 10px;
 	column-count: 1;
-	transition: 1s width ease-in-out;
+	transition: 0.45s background-color ease-in-out;
 
 	min-height: 20px;
 	background-color: #444;
@@ -115,6 +115,7 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 	display: flex;
 	flex-direction: column;
 	break-inside: avoid;
+	transition: 0.45s background-color ease-in-out;
 }
 
 .sorted > div > div[class^="note"] 

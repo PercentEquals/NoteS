@@ -5,8 +5,7 @@ $(document).ready(function() {
 });
 
 // Update notes to show only those that user wants to see
-function updateNotes(date)
-{
+function updateNotes(date) {
 	// Show good ones
 	var s = '';
 
@@ -15,8 +14,6 @@ function updateNotes(date)
 		s += '[data-time="'+date[i]+'"]';
 		if (i + 1 != date.length) s += ',';
 	}
-
-	alert(s);
 
 	$('.noted').filter(s).removeClass('hidden');
 	$('.noted').filter(':not('+s+')').addClass('hidden');

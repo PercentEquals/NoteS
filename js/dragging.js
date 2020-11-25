@@ -29,6 +29,8 @@ $(".sorted > div").on("drop", function(event)
 	$("#"+data).attr("data-time", $(this).children("div").children("div").attr("data-day-time"));
 
 	$("#"+data).addClass("noted");
+
+	// TODO: send this data to modify.php
 });
 
 // Drop to unsorted
@@ -42,11 +44,11 @@ $(".masonry").on("drop", function(event)
 
 	$("#"+data).removeAttr("data-time");
 	$("#"+data).removeClass("noted");
+
+	// TODO: send this data to modify.php
 });
 
 // Drag note event - "send" note id
 $(".note").on("dragstart", function(event) {
-
 	event.originalEvent.dataTransfer.setData("id", $(this).attr("id"));
-
 });
