@@ -8,33 +8,27 @@ $(document).ready(function() {
 function updateNotes(date)
 {
 	// Show good ones
-	if (!Array.isArray(date))
+	var s = '';
+
+	for (var i = 0; i < date.length; i++)
 	{
-		$('.noted').filter('[data-time="'+date+'"]').removeClass('hidden');
-		$('.noted').filter(':not([data-time="'+date+'"])').addClass('hidden');
+		s += '[data-time="'+date[i]+'"]';
+		if (i + 1 != date.length) s += ',';
 	}
-	else
-	{
-		var s = '';
 
-		for (var i = 1; i < date.length; i++)
-		{
-			s += '[data-time="'+date[i]+'"]';
-			if (i + 1 != date.length) s += ',';
-		}
+	alert(s);
 
-		$('.noted').filter(s).removeClass('hidden');
-		$('.noted').filter(':not('+s+')').addClass('hidden');
+	$('.noted').filter(s).removeClass('hidden');
+	$('.noted').filter(':not('+s+')').addClass('hidden');
 
-		// Change dates in calendar
-		// also show if date is today
-		$(".sorted > div").each(function(index) {
-			var s = date[index];
-			if (date[index] == getDay(new Date())) s += " (Today)";
-			
-			$(this).children("div").children("div").text(s);
-		});
-	}
+	// Change dates in calendar
+	// also show if date is today
+	$(".sorted > div").each(function(index) {
+		var s = date[index];
+		$(this).children("div").children("div").attr("data-day-time", s);
+		if (date[index] == getDay(new Date())) s += " (Today)";
+		$(this).children("div").children("div").text(s);
+	});
 }
 
 // Returns full week from date
@@ -77,7 +71,6 @@ function changeCalendar()
 	$(".sorted > div:nth-child("+((date.getUTCDay() == 0) ? 7 : date.getUTCDay())+") > div:first-child").addClass("highlight");
 
 	updateNotes(getWeek(date));
-	//updateNotes(getDay(date));
 }
 
 $('#calendar').change(function() {

@@ -25,13 +25,13 @@ class Note
 
 	public function print()
 	{
-		$d = '<div class="note">';
+		$d = '<div id="N'.$this->id.'" draggable="true"';
 		if ($this->date != NULL) 
 		{
-			$h = ($this->date != date("Y-m-d")) ? "noted hidden" : "noted";
-			$d = '<div class="'.$h.'" data-time="'.$this->date.'">';
-			//$d .= '<div>'.$this->date.'</div>';
+			$h = ($this->date != date("Y-m-d")) ? "note noted hidden" : "note noted";
+			$d .= 'class="'.$h.'" data-time="'.$this->date.'">';
 		}
+		else $d .= 'class="note">';
 
 		echo '
 			'.$d.'
@@ -105,7 +105,7 @@ catch(PDOException $e)
 		</div>
 
 		<div class="overflow">
-			<div class="masonry sorted">
+			<div class="sorted">
 				<div class="monday"> 
 					<div>Monday <div></div></div>
 					<?php foreach($notes_with_dates[1] as $n) $n->print(); ?> 
@@ -142,6 +142,7 @@ catch(PDOException $e)
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="js/index.js"></script>
+	<script src="js/dragging.js"></script>
 
 </body>
 </html>
