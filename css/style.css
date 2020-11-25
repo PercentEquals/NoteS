@@ -4,6 +4,7 @@ html, body
 	background-color: #393939;
 	color: white;
 	font-family: Calibri, sans-serif;
+	overflow: hidden;
 }
 
 header
@@ -23,7 +24,7 @@ body > div
 	column-count: 1;
 	transition: 0.45s background-color ease-in-out;
 
-	min-height: 20px;
+	min-height: 94px;
 	background-color: #444;
 	margin-bottom: 40px;
 	padding: 10px;
@@ -115,7 +116,8 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 	display: flex;
 	flex-direction: column;
 	break-inside: avoid;
-	transition: 0.45s background-color ease-in-out;
+	transition: 0.45s background-color ease-in;
+	min-height: 139px;
 }
 
 .sorted > div > div[class^="note"] 
@@ -181,11 +183,23 @@ div[class^="note"]:not(hidden):nth-child(3n + 1)
 .overflow
 {
 	overflow: hidden;
-	position: relative;
 	overflow-x: auto;
 }
 
 .dragover
 {
 	background-color: #366593 !important;
+}
+
+.ui-draggable-dragging
+{
+	z-index: 1000;
+	opacity: 1 !important;
+
+	font-size: 14px !important;
+    padding: 10px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+	max-height: 200px !important;
+	cursor: move !important;
 }

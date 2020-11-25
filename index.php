@@ -25,7 +25,7 @@ class Note
 
 	public function print()
 	{
-		$d = '<div id="N'.$this->id.'" draggable="true"';
+		$d = '<div id="N'.$this->id.'" ';//draggable="true"';
 		if ($this->date != NULL) 
 		{
 			$h = ($this->date != date("Y-m-d")) ? "note noted hidden" : "note noted";
@@ -78,7 +78,9 @@ catch(PDOException $e)
 
 	<meta charset="utf-8" />
 	<title>NoteS</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 
 </head>
@@ -138,11 +140,12 @@ catch(PDOException $e)
 		</div>
 	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script src="js/index.js"></script>
-	<script src="js/dragging.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/dragging.js"></script>
 
 </body>
 </html>
