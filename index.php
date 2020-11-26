@@ -85,7 +85,7 @@ catch(PDOException $e)
 <body>
 
 	<header>
-		<input type="date" id="calendar" />
+		
 	</header>
 
 	<div>
@@ -100,8 +100,15 @@ catch(PDOException $e)
 			?>
 		</div>
 		
-		<div class="col-sm-5">
-			<h2>Sorted notes</h2>
+		<div class="row">
+			<div class="col-sm-6">
+				<h2>Sorted notes</h2>
+			</div>
+			<div class="col-sm-6 align-right">
+				<input type="button" id="prev-date" value="&lt;"/>
+				<input type="date" id="calendar" />
+				<input type="button" id="next-date" value="&gt;"/>
+			</div>
 		</div>
 
 		<div class="overflow">

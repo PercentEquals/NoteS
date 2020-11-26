@@ -59,9 +59,15 @@ function getDay(date)
 }
 
 // Update notes on calendar change
-function changeCalendar()
+function changeCalendar(offset = 0)
 {
 	var date = new Date($('#calendar').val());
+	
+	if (offset != 0)
+	{
+		date.setDate(date.getDate() + offset);
+		$("#calendar").attr("value", getDay(date));
+	}
 
 	// Highlight selected day
 	$(".day > div").removeClass("highlight");
@@ -72,4 +78,12 @@ function changeCalendar()
 
 $('#calendar').change(function() {
 	changeCalendar();
+});
+
+$('#prev-date').click(function() {
+	changeCalendar(-1);
+});
+
+$('#next-date').click(function() {
+	changeCalendar(1);
 });

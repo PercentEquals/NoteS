@@ -27,7 +27,7 @@ header
 	column-count: 1;
 	transition: 0.45s background-color ease-in-out;
 
-	min-height: 94px;
+	min-height: 84px;
 	background-color: #444;
 	margin-bottom: 40px;
 	padding: 10px;
@@ -188,4 +188,14 @@ div[class^="note"]:not(.hidden):nth-child(3n + 1)
     text-overflow: ellipsis !important;
 	max-height: 200px !important;
 	cursor: move !important;
+}
+
+.align-right
+{
+	text-align: right;
+}
+
+#prev-date, #next-date
+{
+	font-weight: bold;
 }
