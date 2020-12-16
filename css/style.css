@@ -18,6 +18,13 @@ header
 {
 	height: 50px;
 	background-color: #2A2A2A;
+	padding: 15px;
+	box-sizing: content-box !important;
+}
+
+header::first-letter
+{
+	color:  #FFD466;
 }
 
 /* Unsorted */
@@ -75,12 +82,22 @@ div[class^="note"]:not(.hidden):nth-child(2n)
 	background-color: #FCE06A;
 }
 
-div[class^="note"]:not(.hidden):nth-child(3n + 1)
+div[class^="note"]:not(.hidden):nth-child(3n)
 {
 	background-color: #FFD466;
 }
 
+.col-sm-6 
+{
+	padding: 0;
+}
+
 /* Sorted */
+.row
+{
+	padding: 15px;
+}
+
 .sorted
 {
 	display: flex;
@@ -136,6 +153,23 @@ div[class^="note"]:not(.hidden):nth-child(3n + 1)
 	font-size: 14px;
 }
 
+.row input
+{
+	display: inline-block;
+	background-color: #292929;
+	color: white;
+	border: 0px;
+	padding: 5px;
+	margin: 5px;
+	min-width: 35px;
+	transition: 0.45s background-color ease-in;
+}
+
+.row input:last-child
+{
+	margin-right: 0;
+}
+
 /* ERROR PAGE */
 .error
 {
@@ -151,7 +185,25 @@ div[class^="note"]:not(.hidden):nth-child(3n + 1)
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	height: 100vh;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.error_wrapper > a 
+{
+	margin-top: 10px;
+	text-decoration: none;
+	color: white;
+	padding: 15px;
+	background-color: #222;
+	transition: 0.45s background-color ease-in;
+}
+
+.error_wrapper > a:hover, .row input:hover
+{
+	background-color: #39F;
 }
 
 /* Stylers */
@@ -192,10 +244,31 @@ div[class^="note"]:not(.hidden):nth-child(3n + 1)
 
 .align-right
 {
-	text-align: right;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: flex-end;
 }
 
 #prev-date, #next-date
 {
 	font-weight: bold;
+}
+
+@media only screen and (max-width: 575px)
+{
+	.col-sm-6
+	{
+		text-align: center;
+	}
+	.align-right
+	{
+		justify-content: center;
+	}
+}
+
+::-webkit-calendar-picker-indicator 
+{
+	filter: invert(1);
+	cursor: pointer;
 }

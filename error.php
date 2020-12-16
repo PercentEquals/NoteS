@@ -16,7 +16,14 @@ if(!isset($error)) exit();
 
 	<div class="error_wrapper">
 		<div class="error"><?php echo $error; ?></div>
+		<a href="main">RETURN</a>
 	</div>
 
 </body>
 </html>
+
+<?php
+
+exit();
+
+?>

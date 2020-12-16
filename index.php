@@ -1,12 +1,5 @@
 <?php
 
-// Error logging
-function err($error)
-{
-	include('error.php');
-	exit();	
-}
-
 // Class that stores one Note for easier data manipulation
 class Note
 {
@@ -65,7 +58,8 @@ try
 }
 catch(PDOException $e)
 {
-	err('Database error: '.$e->getMessage());
+	$error = 'Database error: '.$e->getMessage();
+	include('error.php');
 }
 
 ?>
@@ -85,13 +79,18 @@ catch(PDOException $e)
 <body>
 
 	<header>
-		
+		<h1>NoteS</h1>
 	</header>
 
 	<div>
 
-		<div class="col-sm-5">
-			<h2>Unsorted notes</h2>
+		<div class="row">
+			<div class="col-sm-6">
+				<h2>Unsorted notes</h2>
+			</div>
+			<div class="col-sm-6 align-right">
+				<input type="button" id="add-note" value="+&nbsp;&nbsp;Add note"/>
+			</div>
 		</div>
 
 		<div class="masonry">

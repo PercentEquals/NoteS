@@ -35,8 +35,8 @@ function getWeek(date)
 
 	for (let i = 1; i <= 7; i++) 
 	{
-		let sday = (date.getUTCDay() == 0) ? 7 : date.getUTCDay();
-		let first = (date.getUTCDate() - sday + i);
+		let sday = (date.getDay() == 0) ? 7 : date.getDay();
+		let first = (date.getDate() - sday + i);
 		let day = new Date(date.setDate(first)).toISOString().slice(0, 10);
 		week.push(day);
 	}
@@ -47,13 +47,13 @@ function getWeek(date)
 // Returns one day from date
 function getDay(date)
 {
-	day = date.getUTCDate();
+	day = date.getDate();
 	if (day < 10) day = '0' + day;
 
-	month = date.getUTCMonth() + 1;
+	month = date.getMonth() + 1;
 	if (month < 10) month = '0' + month;
 
-	year = date.getUTCFullYear();
+	year = date.getFullYear();
 
 	return [year, month, day].join('-');
 }
@@ -71,7 +71,7 @@ function changeCalendar(offset = 0)
 
 	// Highlight selected day
 	$(".day > div").removeClass("highlight");
-	$(".day:nth-child("+((date.getUTCDay() == 0) ? 7 : date.getUTCDay())+") > div:first-child").addClass("highlight");
+	$(".day:nth-child("+((date.getDay() == 0) ? 7 : date.getDay())+") > div:first-child").addClass("highlight");
 
 	updateNotes(getWeek(date));
 }
