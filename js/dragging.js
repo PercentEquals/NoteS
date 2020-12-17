@@ -30,7 +30,15 @@ $(".day, .masonry").droppable({
 			$("#"+data).removeClass("noted");
 		}
 
-		// TODO: send this data to modify.php
+		// Send this data to modify.php
+		var id = $("#"+data).attr("id").substring(1);
+		var dt = null;
+		if ($("#"+data).is("[data-time]")) dt = $("#"+data).attr("data-time");
+
+		$.post("php/modify.php", {
+			id: id,
+			date: dt
+		});
 	},
 	over: function(event, ui) {
 		event.preventDefault();
