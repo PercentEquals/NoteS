@@ -31,7 +31,7 @@ CREATE TABLE `notes` (
   `id` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
