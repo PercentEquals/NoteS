@@ -1,6 +1,11 @@
 // Set date
 $(document).ready(function() {
-	$("#calendar").attr("value", getDay(new Date()));
+
+	// Read date from cookie if set
+	var date = Cookies.get('date');
+	if (typeof date === 'undefined') date = getDay(new Date())
+
+	$("#calendar").attr("value", date);
 	changeCalendar();
 });
 
@@ -68,6 +73,10 @@ function changeCalendar(offset = 0)
 		date.setDate(date.getDate() + offset);
 		$("#calendar").attr("value", getDay(date));
 	}
+
+	// Set cookie with last chosen date for 30 minutes
+	Cookies.remove('date');
+	Cookies.set('date', getDay(date), { expires: 1/48 });
 
 	// Highlight selected day
 	$(".day > div").removeClass("highlight");

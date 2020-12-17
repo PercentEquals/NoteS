@@ -19,7 +19,8 @@ class Note
 		$d = '<div id="N'.$this->id.'" ';
 		if ($this->date != NULL) 
 		{
-			$h = ($this->date != date("Y-m-d")) ? "note noted hidden" : "note noted";
+			//$h = ($this->date != date("Y-m-d")) ? "note noted hidden" : "note noted";
+			$h = 'note noted hidden';
 			$d .= 'class="'.$h.'" data-time="'.$this->date.'">';
 		}
 		else $d .= 'class="note">';
@@ -113,31 +114,31 @@ catch(PDOException $e)
 		<div class="overflow">
 			<div class="sorted">
 				<div class="day"> 
-					<div>Monday <div></div></div>
+					<div>Monday <div>&nbsp;</div></div>
 					<?php foreach($notes_with_dates[1] as $n) $n->print(); ?> 
 				</div>
 				<div class="day"> 
-					<div>Tuesday <div></div></div>
+					<div>Tuesday <div>&nbsp;</div></div>
 					<?php foreach($notes_with_dates[2] as $n) $n->print(); ?> 
 				</div>
 				<div class="day"> 
-					<div>Wednesday <div></div></div>
+					<div>Wednesday <div>&nbsp;</div></div>
 					<?php foreach($notes_with_dates[3] as $n) $n->print(); ?> 
 				</div>
 				<div class="day"> 
-					<div>Thursday <div></div></div>
+					<div>Thursday <div>&nbsp;</div></div>
 					<?php foreach($notes_with_dates[4] as $n) $n->print(); ?> 
 				</div>
 				<div class="day"> 
-					<div>Friday <div></div></div>
+					<div>Friday <div>&nbsp;</div></div>
 					<?php foreach($notes_with_dates[5] as $n) $n->print(); ?> 
 				</div>
 				<div class="day"> 
-					<div>Saturday <div></div></div>
+					<div>Saturday <div>&nbsp;</div></div>
 					<?php foreach($notes_with_dates[6] as $n) $n->print(); ?> 
 				</div>
 				<div class="day"> 
-					<div>Sunday <div></div></div>
+					<div>Sunday <div>&nbsp;</div></div>
 					<?php foreach($notes_with_dates[0] as $n) $n->print(); ?> 
 				</div>
 			</div>
@@ -148,6 +149,7 @@ catch(PDOException $e)
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/dragging.js"></script>
 
