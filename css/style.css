@@ -6,6 +6,8 @@ html, body
 	color: white;
 	font-family: Calibri, sans-serif;
 	overflow-x: hidden;
+	position: relative;
+	z-index: 1000;
 }
 
 body > div
@@ -30,8 +32,11 @@ header::first-letter
 /* Unsorted */
 .masonry
 {
-	column-gap: 10px;
-	column-count: 1;
+	position: relative;
+	z-index: 10;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
 	transition: 0.45s background-color ease-in-out;
 
 	min-height: 84px;
@@ -40,19 +45,33 @@ header::first-letter
 	padding: 10px;
 }
 
+.masonry > div:first-child
+{
+	display: none;
+}
+
+.masonry > .note
+{
+	width: 100%;
+	font-size: 16px;
+}
+
 @media only screen and (min-width: 1300px) 
 {
-	.masonry 
+	.masonry > .note
 	{
-		column-count: 3;
+		width: 33%;
+		width: calc(33.33% - 5px);		
 	}
 }
 
 @media only screen and (max-width: 1299px) and (min-width: 768px) 
 {
-	.masonry 
+	.masonry > .note
 	{
-		column-count: 2;
+		width: 49.60%;
+		width: calc(50% - 5px);
+		font-size: 13px;
 	}
 }
 
@@ -272,3 +291,10 @@ div[class^="note"]:not(.hidden):nth-child(3n)
 	filter: invert(1);
 	cursor: pointer;
 }
+
+/* From: https://bugs.jqueryui.com/ticket/14779 */
+.ui-draggable-handle 
+{ 
+	-ms-touch-action: auto !important; 
+	touch-action: auto !important; 
+} 
