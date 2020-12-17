@@ -1,17 +1,17 @@
 // Set date
 $(document).ready(function() {
-
-	// Read date from cookie if set
+	// Read date from cookie if set (this helps when user refreshes website so they don't need to scroll calendar)
 	var date = Cookies.get('date');
 	if (typeof date === 'undefined') date = getDay(new Date())
 
+	// Change attr of calendar input and change calendar GUI
 	$("#calendar").attr("value", date);
 	changeCalendar();
 });
 
 // Update notes to show only those that user wants to see
 function updateNotes(date) {
-	// Filter only those from whole week
+	// Filter only those from whole week (by using "array" of css selectors)
 	var s = '';
 
 	for (var i = 0; i < date.length; i++)
@@ -23,8 +23,7 @@ function updateNotes(date) {
 	$('.noted').filter(s).removeClass('hidden');
 	$('.noted').filter(':not('+s+')').addClass('hidden');
 
-	// Change dates in calendar
-	// also show if date is today
+	// Change dates in calendar, also show if date is today
 	$(".day").each(function(index) {
 		var s = date[index];
 		$(this).children("div").children("div").attr("data-day-time", s);
@@ -68,6 +67,7 @@ function changeCalendar(offset = 0)
 {
 	var date = new Date($('#calendar').val());
 	
+	// Add offset to date (when using prev and next "arrow" buttons)
 	if (offset != 0)
 	{
 		date.setDate(date.getDate() + offset);
@@ -82,6 +82,7 @@ function changeCalendar(offset = 0)
 	$(".day > div").removeClass("highlight");
 	$(".day:nth-child("+((date.getDay() == 0) ? 7 : date.getDay())+") > div:first-child").addClass("highlight");
 
+	// Update notes to show only those from selected week
 	updateNotes(getWeek(date));
 }
 

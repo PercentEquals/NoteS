@@ -42,7 +42,7 @@ $notes_with_dates = array_fill(0, 7, array());
 try 
 {
 	include('database.php');
-	$q = $db_conn->prepare('SELECT * FROM notes ORDER BY date'); 
+	$q = $db_conn->prepare('SELECT * FROM notes ORDER BY date, id DESC'); 
 	$q->execute();
 
 	while($row = $q->fetch()) 
@@ -95,6 +95,7 @@ catch(PDOException $e)
 		</div>
 
 		<div class="masonry">
+			<div></div>
 			<?php
 				foreach($notes as $n) $n->print();
 			?>
@@ -114,31 +115,31 @@ catch(PDOException $e)
 		<div class="overflow">
 			<div class="sorted">
 				<div class="day"> 
-					<div>Monday <div>&nbsp;</div></div>
+					<div>Monday <div>0000-00-00</div></div>
 					<?php foreach($notes_with_dates[1] as $n) $n->print(); ?> 
 				</div>
 				<div class="day"> 
-					<div>Tuesday <div>&nbsp;</div></div>
+					<div>Tuesday <div>0000-00-00</div></div>
 					<?php foreach($notes_with_dates[2] as $n) $n->print(); ?> 
 				</div>
 				<div class="day"> 
-					<div>Wednesday <div>&nbsp;</div></div>
+					<div>Wednesday <div>0000-00-00</div></div>
 					<?php foreach($notes_with_dates[3] as $n) $n->print(); ?> 
 				</div>
 				<div class="day"> 
-					<div>Thursday <div>&nbsp;</div></div>
+					<div>Thursday <div>0000-00-00</div></div>
 					<?php foreach($notes_with_dates[4] as $n) $n->print(); ?> 
 				</div>
 				<div class="day"> 
-					<div>Friday <div>&nbsp;</div></div>
+					<div>Friday <div>0000-00-00</div></div>
 					<?php foreach($notes_with_dates[5] as $n) $n->print(); ?> 
 				</div>
 				<div class="day"> 
-					<div>Saturday <div>&nbsp;</div></div>
+					<div>Saturday <div>0000-00-00</div></div>
 					<?php foreach($notes_with_dates[6] as $n) $n->print(); ?> 
 				</div>
 				<div class="day"> 
-					<div>Sunday <div>&nbsp;</div></div>
+					<div>Sunday <div>0000-00-00</div></div>
 					<?php foreach($notes_with_dates[0] as $n) $n->print(); ?> 
 				</div>
 			</div>

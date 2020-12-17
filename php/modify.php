@@ -18,10 +18,6 @@ try
 
 	if ($_POST['date'] == 0) $_POST['date'] = null;
 
-	echo($query);
-	echo(' '.$_POST['id']);
-	echo(' '.$_POST['date']);
-
 	$q = $db_conn->prepare($query); 
 	if ($isDesc) $q->bindParam(':desc', $_POST['desc']);
 	if ($isDate) $q->bindParam(':date', $_POST['date']);
