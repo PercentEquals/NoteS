@@ -6,13 +6,79 @@ html, body
 	color: white;
 	font-family: Calibri, sans-serif;
 	overflow-x: hidden;
-	position: relative;
-	z-index: 1000;
+	min-height: 100vh;
 }
 
-body > div
+body > #main
 {
+	position: relative;
+	z-index: 10;
 	margin: 20px;
+}
+
+/* Modify with overlay */
+.overlay, #modify 
+{
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	opacity: 0;
+	position: fixed;
+	transition: 0.5s opacity ease-in-out;
+}
+
+.overlay
+{
+	background-color: #222;
+}
+
+.overlay-active
+{
+	z-index: 100;
+	opacity: 0.8;
+}
+
+#modify 
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#modify.overlay-active
+{
+	z-index: 120 !important;
+	opacity: 1;
+}
+
+#modify form
+{
+	display: block;
+	background-color: #FFC355;
+	margin: 0;
+	width: 100%;
+	margin: 20px;
+	max-width: 425px;
+}
+
+#modify textarea
+{
+	width: 100%;
+	min-height: 100px;
+	margin: 0 !important;
+}
+
+#modify form .modify-row
+{
+	display: flex;
+}
+
+.modify-row > input:first-child
+{
+	margin-left: 0 !important;
+	flex-grow: 1;
 }
 
 /* Header */
@@ -76,14 +142,13 @@ header::first-letter
 }
 
 /* Note */
-div[class^="note"] 
+div[class^="note"], #modify form
 {
 	position: relative;
 	font-size: 16px;
 	margin-bottom: 10px;
 	break-inside: avoid;
 	color: black;
-	background-color: #F2B866; /* #79A4D9; */
 	padding: 20px;
 	border-radius: 5px;
 	font-weight: bold;
@@ -94,6 +159,11 @@ div[class^="note"]
 div[class^="note"]:hover
 {
 	opacity: 0.40;
+}
+
+div[class^="note"]:not(.hidden):nth-child(n)
+{
+	background-color: #F2B866;
 }
 
 div[class^="note"]:not(.hidden):nth-child(2n)
@@ -172,7 +242,7 @@ div[class^="note"]:not(.hidden):nth-child(3n)
 	font-size: 14px;
 }
 
-.row input
+.row input, .modify-row input, textarea
 {
 	display: inline-block;
 	background-color: #292929;
@@ -184,7 +254,7 @@ div[class^="note"]:not(.hidden):nth-child(3n)
 	transition: 0.45s background-color ease-in;
 }
 
-.row input:last-child
+.row input:last-child, .modify-row input
 {
 	margin-right: 0;
 }
@@ -220,9 +290,14 @@ div[class^="note"]:not(.hidden):nth-child(3n)
 	transition: 0.45s background-color ease-in;
 }
 
-.error_wrapper > a:hover, .row input:hover
+.error_wrapper > a:hover, .row input:hover, .modify-row input:hover:not(#delete)
 {
 	background-color: #39F;
+}
+
+#delete:hover
+{
+	background-color: #e74c3c;
 }
 
 /* Stylers */
@@ -284,6 +359,12 @@ div[class^="note"]:not(.hidden):nth-child(3n)
 	{
 		justify-content: center;
 	}
+}
+
+/* Additional */
+.font
+{
+	font-family: fontello !important;
 }
 
 ::-webkit-calendar-picker-indicator 

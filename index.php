@@ -25,11 +25,7 @@ class Note
 		}
 		else $d .= 'class="note">';
 
-		echo '
-			'.$d.'
-				'.$this->description.'
-			</div>
-		';
+		echo $d.''.$this->description.'</div>';
 	}
 }
 
@@ -74,6 +70,7 @@ catch(PDOException $e)
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="css/fontello.css" type="text/css" />
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 
 </head>
@@ -83,7 +80,7 @@ catch(PDOException $e)
 		<h1>NoteS</h1>
 	</header>
 
-	<div>
+	<div id="main">
 
 		<div class="row">
 			<div class="col-sm-6">
@@ -106,9 +103,9 @@ catch(PDOException $e)
 				<h2>Sorted notes</h2>
 			</div>
 			<div class="col-sm-6 align-right">
-				<input type="button" id="prev-date" value="&lt;"/>
+				<input type="button" id="prev-date" value="&#xe801;" class="font"/>
 				<input type="date" id="calendar" />
-				<input type="button" id="next-date" value="&gt;"/>
+				<input type="button" id="next-date" value="&#xe802;" class="font"/>
 			</div>
 		</div>
 
@@ -144,6 +141,20 @@ catch(PDOException $e)
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="overlay"></div>
+	<div id="modify">
+		<form>
+			<h2>Add note:</h2>
+			<div class="modify-row">
+				<input type="button" value="Remove date" id="clear" />
+				<input type="date" id="date" />
+				<input type="button" value="&#xe803;" class="font" id="save" />
+				<input type="button" value="&#xf1f8;" class="font" id="delete" />
+			</div>
+			<textarea>Your note goes here...</textarea>
+		</form>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
