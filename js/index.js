@@ -86,6 +86,7 @@ function changeCalendar(offset = 0)
 	updateNotes(getWeek(date));
 }
 
+// Calendar events
 $('#calendar').change(function() {
 	changeCalendar();
 });
@@ -96,4 +97,45 @@ $('#prev-date').click(function() {
 
 $('#next-date').click(function() {
 	changeCalendar(1);
+});
+
+// Modify note events
+var isInBox = true;
+var isInFocus = false;
+
+function showModify(add)
+{
+	if (add) $('#modify form h2').text("Add note:");
+	else	 $('#modify form h2').text("Modify note:");
+
+	$('.overlay').addClass('overlay-active');
+	$('#modify').addClass('overlay-active');
+}
+
+function hideModify()
+{
+	if (isInBox && !isInFocus)
+	{
+		$('.overlay').removeClass('overlay-active');
+		$('#modify').removeClass('overlay-active');
+	}
+}
+
+$('#add-note').click(function() { showModify(true) });
+$('#modify').click(function() { hideModify() });
+
+$('#modify form').mouseenter(function() { isInBox = false; });
+$('#modify form').mouseleave(function() { isInBox = true; });
+$('#modify form input').focusin(function() { isInFocus = true; });
+$('#modify form input').focusout(function() { isInFocus = false; });
+
+$('.note').click(function() {
+	$('#modify form textarea').text($(this).text());
+	$('#modify form #date').val($(this).data("time"));
+	showModify(false);
+});
+
+// Forms
+$('#modify form #clear').click(function() {
+	$('#modify form #date').val("");
 });
