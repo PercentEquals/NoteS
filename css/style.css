@@ -49,8 +49,13 @@ body > #main
 
 #modify.overlay-active
 {
-	z-index: 120 !important;
+	z-index: 100;
 	opacity: 1;
+}
+
+#modify.overlay-active form
+{
+	z-index: 120;
 }
 
 #modify form

@@ -100,9 +100,6 @@ $('#next-date').click(function() {
 });
 
 // Modify note events
-var isInBox = true;
-var isInFocus = false;
-
 function showModify(add)
 {
 	if (add) $('#modify form h2').text("Add note:");
@@ -112,22 +109,17 @@ function showModify(add)
 	$('#modify').addClass('overlay-active');
 }
 
-function hideModify()
+function hideModify(node)
 {
-	if (isInBox && !isInFocus)
-	{
-		$('.overlay').removeClass('overlay-active');
-		$('#modify').removeClass('overlay-active');
-	}
+	console.log(node + " " + (node != "FORM"))
+	if (node != "DIV") return;
+	$('.overlay').removeClass('overlay-active');
+	$('#modify').removeClass('overlay-active');
 }
 
+// Forms
 $('#add-note').click(function() { showModify(true) });
-$('#modify').click(function() { hideModify() });
-
-$('#modify form').mouseenter(function() { isInBox = false; });
-$('#modify form').mouseleave(function() { isInBox = true; });
-$('#modify form input').focusin(function() { isInFocus = true; });
-$('#modify form input').focusout(function() { isInFocus = false; });
+$('#modify').mousedown(function(event) { hideModify(event.target.nodeName) });
 
 $('.note').click(function() {
 	$('#modify form textarea').text($(this).text());
@@ -135,7 +127,6 @@ $('.note').click(function() {
 	showModify(false);
 });
 
-// Forms
 $('#modify form #clear').click(function() {
 	$('#modify form #date').val("");
 });
