@@ -114,6 +114,9 @@ function hideModify(node)
 	if (node != "modify") return;
 	$('.overlay').removeClass('overlay-active');
 	$('#modify').removeClass('overlay-active');
+	$('#modify form textarea').val('Your note goes here...');
+	$('#modify form #date').val('');
+	$('#modify form #form-id').val(-1);
 }
 
 // Forms
@@ -121,7 +124,7 @@ $('#add-note').click(function() { showModify(true) });
 $('#modify').mousedown(function(event) { hideModify(event.target.id) });
 
 $('.note').click(function() {
-	$('#modify form textarea').text($(this).text());
+	$('#modify form textarea').val($(this).text());
 	$('#modify form #date').val($(this).data("time"));
 	$('#modify form #form-id').val($(this).attr("id").substring(1));
 	showModify(false);
