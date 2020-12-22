@@ -141,6 +141,7 @@ catch(PDOException $e)
 	<div class="overlay"></div>
 	<div id="modify">
 		<form>
+		<input type="text" class="hidden" id="form-id" value="-1" disabled />
 			<h2>Add note:</h2>
 			<div class="modify-row">
 				<input type="button" value="Remove date" id="clear" />

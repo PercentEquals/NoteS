@@ -123,6 +123,7 @@ $('#modify').mousedown(function(event) { hideModify(event.target.id) });
 $('.note').click(function() {
 	$('#modify form textarea').text($(this).text());
 	$('#modify form #date').val($(this).data("time"));
+	$('#modify form #form-id').val($(this).attr("id").substring(1));
 	showModify(false);
 });
 
@@ -131,10 +132,14 @@ $('#modify form #clear').click(function() {
 });
 
 $('#modify form #save').click(function() {
-	$.post("php/modify.php", {
-		date: $('#modify form #date').val(),
-		desc: $('#modify form textarea').val()
-	});
+	
+	var id = $('#modify form #form-id').val();
+	var dt = $('#modify form #date').val();
+	var ds = $('#modify form textarea').val();
+
+	if (id === -1) $.post("php/modify.php", { date: dt, desc: ds });
+	else $.post("php/modify.php", { id: id, date: dt, desc: ds });
+
 	hideModify("modify");
 	location.reload();
 });
