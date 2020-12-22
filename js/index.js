@@ -111,15 +111,14 @@ function showModify(add)
 
 function hideModify(node)
 {
-	console.log(node + " " + (node != "FORM"))
-	if (node != "DIV") return;
+	if (node != "modify") return;
 	$('.overlay').removeClass('overlay-active');
 	$('#modify').removeClass('overlay-active');
 }
 
 // Forms
 $('#add-note').click(function() { showModify(true) });
-$('#modify').mousedown(function(event) { hideModify(event.target.nodeName) });
+$('#modify').mousedown(function(event) { hideModify(event.target.id) });
 
 $('.note').click(function() {
 	$('#modify form textarea').text($(this).text());
@@ -129,4 +128,13 @@ $('.note').click(function() {
 
 $('#modify form #clear').click(function() {
 	$('#modify form #date').val("");
+});
+
+$('#modify form #save').click(function() {
+	$.post("php/modify.php", {
+		date: $('#modify form #date').val(),
+		desc: $('#modify form textarea').val()
+	});
+	hideModify("modify");
+	location.reload();
 });
