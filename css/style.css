@@ -171,12 +171,12 @@ div[class^="note"]:not(.hidden):nth-child(n)
 	background-color: #F2B866;
 }
 
-div[class^="note"]:not(.hidden):nth-child(2n)
+div[class^="note"]:not(.hidden):nth-child(2n+3)
 {
 	background-color: #FCE06A;
 }
 
-div[class^="note"]:not(.hidden):nth-child(3n)
+div[class^="note"]:not(.hidden):nth-child(5n+4)
 {
 	background-color: #FFD466;
 }
