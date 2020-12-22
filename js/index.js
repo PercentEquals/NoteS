@@ -111,22 +111,37 @@ function showModify(add)
 
 function hideModify(node)
 {
-	console.log(node + " " + (node != "FORM"))
-	if (node != "DIV") return;
+	if (node != "modify") return;
 	$('.overlay').removeClass('overlay-active');
 	$('#modify').removeClass('overlay-active');
 }
 
 // Forms
 $('#add-note').click(function() { showModify(true) });
-$('#modify').mousedown(function(event) { hideModify(event.target.nodeName) });
+$('#modify').mousedown(function(event) { hideModify(event.target.id) });
 
 $('.note').click(function() {
 	$('#modify form textarea').text($(this).text());
 	$('#modify form #date').val($(this).data("time"));
+	$('#modify form #form-id').val($(this).attr("id").substring(1));
 	showModify(false);
 });
 
 $('#modify form #clear').click(function() {
 	$('#modify form #date').val("");
+});
+
+$('#modify form #save').click(function() {
+	var id = $('#modify form #form-id').val();
+	var dt = $('#modify form #date').val();
+	var ds = $('#modify form textarea').val();
+	var st;
+
+	if (id == -1) st = $.post("php/modify.php", { date: dt, desc: ds });
+	else st = $.post("php/modify.php", { id: id, date: dt, desc: ds });
+
+	st.done(function(data) {
+		hideModify("modify");
+		location.reload();
+	});
 });

@@ -384,6 +384,15 @@ div[class^="note"]:not(.hidden):nth-child(5n+4)
 	font-family: fontello !important;
 }
 
+input.hidden
+{
+	display: none;
+	visibility: hidden;
+	opacity: 0;
+	width: 0px;
+	height: 0px;
+}
+
 ::-webkit-calendar-picker-indicator 
 {
 	filter: invert(1);

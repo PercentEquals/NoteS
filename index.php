@@ -17,15 +17,10 @@ class Note
 	public function print()
 	{
 		$d = '<div id="N'.$this->id.'" ';
-		if ($this->date != NULL) 
-		{
-			//$h = ($this->date != date("Y-m-d")) ? "note noted hidden" : "note noted";
-			$h = 'note noted hidden';
-			$d .= 'class="'.$h.'" data-time="'.$this->date.'">';
-		}
+		if ($this->date != NULL) $d .= 'class="note noted hidden" data-time="'.$this->date.'">';
 		else $d .= 'class="note">';
 
-		echo $d.''.$this->description.'</div>';
+		echo $d.''.htmlspecialchars($this->description).'</div>';
 	}
 }
 
@@ -146,6 +141,7 @@ catch(PDOException $e)
 	<div class="overlay"></div>
 	<div id="modify">
 		<form>
+		<input type="text" class="hidden" id="form-id" value="-1" disabled />
 			<h2>Add note:</h2>
 			<div class="modify-row">
 				<input type="button" value="Remove date" id="clear" />
