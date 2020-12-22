@@ -9,7 +9,14 @@ try
 	$isID = isset($_POST['id']);
 	if ($isDate && $_POST['date'] == 0) $_POST['date'] = null;
 
-	// TODO: include validate
+	// Check for id
+	if ($isID)
+	{
+		$q = $db_conn->prepare('SELECT id FROM notes WHERE id=:id');
+		$q->bindParam(':id', $_POST['id']);
+		$q->execute();
+		if (!$q->rowCount()) throw new PDOException('Wrong id');
+	}
 
 	// Query for modify
 	$query = 'UPDATE notes SET ';
