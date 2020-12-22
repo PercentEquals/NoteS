@@ -305,6 +305,18 @@ div[class^="note"]:not(.hidden):nth-child(3n)
 	background-color: #e74c3c;
 }
 
+#save
+{
+    background-color: #18ba2e;
+}
+
+#save:hover
+{
+	
+    filter: contrast(100%);
+    font-size: 110%;
+}
+
 /* Stylers */
 .hidden
 {
