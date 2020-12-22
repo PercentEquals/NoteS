@@ -148,3 +148,16 @@ $('#modify form #save').click(function() {
 		location.reload();
 	});
 });
+
+$('#modify form #delete').click(function() {
+	if ($('#modify form #form-id').val() == -1) return;
+
+	if (confirm("Do You really want to delete this note?"))
+	{
+		$.post("php/modify.php", { id: $('#modify form #form-id').val() }).done(function ()
+		{
+			hideModify("modify"); 
+			location.reload(); 
+		});
+	}
+});
