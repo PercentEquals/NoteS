@@ -32,8 +32,7 @@ try
 }
 catch(PDOException $e)
 {
-	$error = 'Database error: '.$e->getMessage();
-	include('../error.php');
+	echo 'Database error: '.$e->getMessage();
 }
 
 ?>

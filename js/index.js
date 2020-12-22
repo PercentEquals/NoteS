@@ -132,14 +132,16 @@ $('#modify form #clear').click(function() {
 });
 
 $('#modify form #save').click(function() {
-	
 	var id = $('#modify form #form-id').val();
 	var dt = $('#modify form #date').val();
 	var ds = $('#modify form textarea').val();
+	var st;
 
-	if (id === -1) $.post("php/modify.php", { date: dt, desc: ds });
-	else $.post("php/modify.php", { id: id, date: dt, desc: ds });
+	if (id == -1) st = $.post("php/modify.php", { date: dt, desc: ds });
+	else st = $.post("php/modify.php", { id: id, date: dt, desc: ds });
 
-	hideModify("modify");
-	location.reload();
+	st.done(function(data) {
+		hideModify("modify");
+		location.reload();
+	});
 });
