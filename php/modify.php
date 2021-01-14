@@ -7,7 +7,7 @@ try
 	$isDesc = isset($_POST['desc']);
 	$isDate = isset($_POST['date']);
 	$isID = isset($_POST['id']);
-	if ($isDate && $_POST['date'] == 0) $_POST['date'] = null;
+	if ($isDate && ($_POST['date'] == 0 || $_POST['date'] == "")) $_POST['date'] = null;
 
 	// Check for id
 	if ($isID)
