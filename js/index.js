@@ -5,7 +5,7 @@ $(document).ready(function() {
 	if (typeof date === 'undefined') date = getDay(new Date())
 
 	// Change attr of calendar input and change calendar GUI
-	$("#calendar").attr("value", date);
+	$("#calendar").val(date);
 	changeCalendar();
 });
 
@@ -71,7 +71,7 @@ function changeCalendar(offset = 0)
 	if (offset != 0)
 	{
 		date.setDate(date.getDate() + offset);
-		$("#calendar").attr("value", getDay(date));
+		$("#calendar").val(getDay(date));
 	}
 
 	// Set cookie with last chosen date for 30 minutes
